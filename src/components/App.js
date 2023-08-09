@@ -12,6 +12,8 @@ import FinishScreen from './FinishScreen';
 import Footer from './Footer';
 import Timer from './Timer';
 
+// http://localhost:8000/questions
+
 const SECS_PER_QUESTION = 30;
 
 const initialState = {
@@ -88,7 +90,7 @@ const App = function () {
   const maxPossiblePoints = questions.reduce((acc, cur) => acc + cur.points, 0);
 
   useEffect(function () {
-    fetch('http://localhost:8000/questions')
+    fetch('https://questions-g33u.onrender.com/questions')
       .then((res) => res.json())
       .then((data) => dispatch({ type: 'dataReceived', payload: data }))
       .catch((err) => dispatch({ type: 'dataFailed' }));
